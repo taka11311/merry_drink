@@ -534,7 +534,8 @@ function addLog(
 
     girlName: name,
     action: type,
-    amount: amount,
+    amount: Math.abs(amount),
+isMinus: amount < 0,
 
     isSales,
     isCorrection: false
@@ -571,7 +572,9 @@ function renderLogs() {
                            >
                              取消
                            </button>`
-                        : `<span>取消済</span>`
+                        : log.cancelled
+    ? `<span>取消済</span>`
+    : ``
                     }
 
                 </div>
@@ -1037,8 +1040,15 @@ function cancelLog(index){
 
         if(girl){
 
-            girl.drinks[log.action] =
-    girl.drinks[log.action] - log.amount;
+            if(log.isMinus){
+
+    girl.drinks[log.action] += log.amount;
+
+}else{
+
+    girl.drinks[log.action] -= log.amount;
+
+}
 
             if(
                 girl.drinks[log.action] < 0
