@@ -752,7 +752,11 @@ document
 
 function aggregateDataByPeriod() {
 
-    
+    const start =
+        document.getElementById("aggregateStart").value;
+
+    const end =
+        document.getElementById("aggregateEnd").value;
 
     if (!start || !end) {
 
@@ -917,20 +921,20 @@ function exportAggregateCSV() {
         return;
 
     }
-    
-const start =
-    document.getElementById("aggregateStart").value;
 
-const end =
-    document.getElementById("aggregateEnd").value;
-    
+    const start =
+        document.getElementById("aggregateStart").value;
+
+    const end =
+        document.getElementById("aggregateEnd").value;
+
     let csv =
-    `集計期間,${start}～${end}\n\n`;
+        `集計期間,${start}～${end}\n\n`;
 
-csv +=
-    "名前," +
-    drinksList.join(",") +
-    ",本指名売上\n";
+    csv +=
+        "名前," +
+        drinksList.join(",") +
+        ",本指名売上\n";
 
     aggregateData.forEach(
         ([name, data]) => {
@@ -952,16 +956,10 @@ csv +=
         }
     );
 
-    const start =
-    document.getElementById("aggregateStart").value;
-
-const end =
-    document.getElementById("aggregateEnd").value;
-
-downloadCSV(
-    csv,
-    `集計_${start}～${end}.csv`
-);
+    downloadCSV(
+        csv,
+        `集計_${start}～${end}.csv`
+    );
 
 }
 
