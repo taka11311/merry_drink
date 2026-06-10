@@ -993,16 +993,16 @@ function addCorrectionLog(
         + `${String(now.getSeconds()).padStart(2,"0")}`;
 
     actionLogs.unshift({
+    text:
+        `${timestamp} ${name} 本指名 訂正 `
+        + `${formatYen(before)} → ${formatYen(after)}`,
 
-        text:
-            `${timestamp} `
-            + `${name} `
-            + `本指名 訂正 `
-            + `${formatYen(before)} → ${formatYen(after)}`,
+    type: "plus",
 
-        type: "plus"
+    cancelled: false,
 
-    });
+    isCorrection: true
+});
 
     saveLogs();
 
