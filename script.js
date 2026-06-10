@@ -958,6 +958,9 @@ downloadCSV(
     csv,
     `集計_${start}～${end}.csv`
 );
+
+}
+
 function editSales(index) {
 
     const current = todayGirls[index].sales;
