@@ -752,15 +752,7 @@ document
 
 function aggregateDataByPeriod() {
 
-    const start =
-        document.getElementById(
-            "aggregateStart"
-        ).value;
-
-    const end =
-        document.getElementById(
-            "aggregateEnd"
-        ).value;
+    
 
     if (!start || !end) {
 
@@ -925,7 +917,13 @@ function exportAggregateCSV() {
         return;
 
     }
+    
+const start =
+    document.getElementById("aggregateStart").value;
 
+const end =
+    document.getElementById("aggregateEnd").value;
+    
     let csv =
     `集計期間,${start}～${end}\n\n`;
 
