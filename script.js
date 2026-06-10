@@ -741,7 +741,10 @@ function aggregateDataByPeriod() {
         return;
 
     }
-
+const selectedGirl =
+    document.getElementById(
+        "aggregateGirl"
+    ).value;
     const result = {};
 
     Object.keys(localStorage)
@@ -778,6 +781,13 @@ function aggregateDataByPeriod() {
                 );
 
             data.forEach(girl => {
+
+    if (
+        selectedGirl !== "ALL" &&
+        girl.name !== selectedGirl
+    ) {
+        return;
+    }
 
                 if (
                     !result[girl.name]
