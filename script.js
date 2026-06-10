@@ -972,3 +972,32 @@ function editSales(index) {
     renderLogs();
 
 }
+function addCorrectionLog(
+    name,
+    before,
+    after
+) {
+
+    const now = new Date();
+
+    const timestamp =
+        `${now.getMonth()+1}/${now.getDate()} `
+        + `${String(now.getHours()).padStart(2,"0")}:`
+        + `${String(now.getMinutes()).padStart(2,"0")}:`
+        + `${String(now.getSeconds()).padStart(2,"0")}`;
+
+    actionLogs.unshift({
+
+        text:
+            `${timestamp} `
+            + `${name} `
+            + `本指名 訂正 `
+            + `${formatYen(before)} → ${formatYen(after)}`,
+
+        type: "plus"
+
+    });
+
+    saveLogs();
+
+}
