@@ -289,3 +289,6 @@ th {
     background:#555;
     color:white;
 }
+body {
+    touch-action: manipulation;
+}
