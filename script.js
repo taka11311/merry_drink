@@ -956,10 +956,13 @@ function exportAggregateCSV() {
         }
     );
 
-    downloadCSV(
-        csv,
-        `集計_${start}～${end}.csv`
-    );
+    console.log(csv);
+alert("CSV出力開始");
+
+downloadCSV(
+    csv,
+    `集計_${start}～${end}.csv`
+);
 
 }
 
