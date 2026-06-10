@@ -552,16 +552,27 @@ function renderLogs() {
 
     logArea.innerHTML =
         actionLogs
-            .map(log => `
+            .map((log,index)=>`
 
                 <div class="
                     logItem
-                    ${log.type === "plus"
-                        ? "logPlus"
-                        : "logMinus"}
+                    ${log.type==="plus"?"logPlus":"logMinus"}
+                    ${log.cancelled?"cancelledLog":""}
                 ">
 
                     ${log.text}
+
+                    ${
+                        !log.cancelled &&
+                        !log.isCorrection
+                        ? `<button
+                                class="cancelBtn"
+                                onclick="cancelLog(${index})"
+                           >
+                             取消
+                           </button>`
+                        : `<span>取消済</span>`
+                    }
 
                 </div>
 
