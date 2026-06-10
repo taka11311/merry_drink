@@ -1018,3 +1018,85 @@ function addCorrectionLog(
     saveLogs();
 
 }
+function cancelLog(index){
+
+    const log = actionLogs[index];
+
+    if(log.cancelled) return;
+
+    if(!confirm("この操作を取り消しますか？")){
+        return;
+    }
+
+    // ドリンク
+    if(!log.isSales){
+
+        const girl = todayGirls.find(
+            g=>g.name===log.girlName
+        );
+
+        if(girl){
+
+            girl.drinks[log.action]
+                -= log.amount;
+
+            if(
+                girl.drinks[log.action] < 0
+            ){
+                girl.drinks[log.action]=0;
+            }
+
+        }
+
+    }
+
+    // 本指名
+    else{
+
+        const girl = todayGirls.find(
+            g=>g.name===log.girlName
+        );
+
+        if(girl){
+
+            girl.sales -= log.amount;
+
+            if(girl.sales < 0){
+                girl.sales = 0;
+            }
+
+        }
+
+    }
+
+    // 元ログに横線
+    log.cancelled = true;
+
+    // 取消ログ追加
+    const now = new Date();
+
+    const timestamp =
+        `${now.getMonth()+1}/${now.getDate()} `
+        + `${String(now.getHours()).padStart(2,"0")}:`
+        + `${String(now.getMinutes()).padStart(2,"0")}:`
+        + `${String(now.getSeconds()).padStart(2,"0")}`;
+
+    actionLogs.unshift({
+
+        text:
+            `${timestamp} ログ取消：${log.text}`,
+
+        type:"minus",
+
+        cancelled:false,
+
+        isCorrection:true
+    });
+
+    saveSession();
+    saveLogs();
+
+    renderTable();
+    renderLogs();
+
+}
