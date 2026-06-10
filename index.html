@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ドリンク管理システム</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <h1>ドリンク管理システム</h1>
+
+  <!-- 営業日 -->
+  <div class="card">
+    <h2>営業日</h2>
+    <input type="date" id="saleDate">
+  </div>
+
+  <!-- 女の子登録 -->
+  <div class="card">
+    <h2>① 女の子登録</h2>
+
+    <div class="row">
+      <input id="girlName" type="text" placeholder="名前を入力">
+      <button id="addGirlBtn">追加</button>
+    </div>
+
+    <div id="girlList"></div>
+  </div>
+
+  <!-- 出勤選択 -->
+  <div class="card">
+    <h2>② 今日の出勤選択</h2>
+
+    <p class="subText">
+      出勤する女の子にチェックを入れてください
+    </p>
+
+    <button id="confirmAttendanceBtn">
+      出勤確定
+    </button>
+  </div>
+
+  <!-- 入力エリア -->
+  <div id="drinkArea"></div>
+
+  <!-- ログ -->
+  <div class="card">
+
+    <div class="sectionHeader">
+      <h2>操作ログ</h2>
+
+      <button
+        id="clearLogsBtn"
+        class="dangerBtn"
+      >
+        ログ削除
+      </button>
+    </div>
+
+    <div id="logArea"></div>
+
+  </div>
+
+  <!-- 営業日CSV -->
+  <div class="card">
+
+    <h2>③ データ操作</h2>
+
+    <div class="buttonGroup">
+
+      <button id="exportTodayCSVBtn">
+        営業日CSV出力
+      </button>
+
+      <button id="resetTodayBtn">
+        今日の数値をリセット
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- 集計 -->
+  <div class="card">
+
+    <h2>④ 期間集計</h2>
+
+    <div class="aggregateForm">
+
+      <div class="dateGroup">
+        <label>開始日</label>
+        <input
+          type="date"
+          id="aggregateStart"
+        >
+      </div>
+
+      <div class="dateGroup">
+        <label>終了日</label>
+        <input
+          type="date"
+          id="aggregateEnd"
+        >
+      </div>
+
+    </div>
+
+    <div class="buttonGroup">
+
+      <button id="aggregateBtn">
+        集計する
+      </button>
+
+      <button id="exportAggregateCSVBtn">
+        集計CSV出力
+      </button>
+
+    </div>
+
+    <div id="aggregateResult"></div>
+
+  </div>
+
+</div>
+
+<!-- 本指名入力モーダル -->
+<div id="salesModal" class="modal hidden">
+
+  <div class="modalContent">
+
+    <h3 id="salesModalTitle">
+      本指名売上追加
+    </h3>
+
+    <input
+      type="tel"
+      id="salesInput"
+      inputmode="numeric"
+      placeholder="金額を入力"
+    >
+
+    <div class="modalButtons">
+
+      <button
+        id="salesCancelBtn"
+        class="dangerBtn"
+      >
+        キャンセル
+      </button>
+
+      <button
+        id="salesSaveBtn"
+      >
+        追加
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
