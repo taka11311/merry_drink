@@ -1037,8 +1037,8 @@ function cancelLog(index){
 
         if(girl){
 
-            girl.drinks[log.action]
-                -= log.amount;
+            girl.drinks[log.action] =
+    girl.drinks[log.action] - log.amount;
 
             if(
                 girl.drinks[log.action] < 0
