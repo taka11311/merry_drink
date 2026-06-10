@@ -154,11 +154,7 @@ function renderGirlList() {
 
         girlList.innerHTML += `
             <div>
-                <input
-                    type="checkbox"
-                    value="${girl}"
-                >
-
+                <input type="checkbox" value="${girl}">
                 ${girl}
 
                 <button
@@ -169,8 +165,9 @@ function renderGirlList() {
                 </button>
             </div>
         `;
-
     });
+
+    renderAggregateGirlSelect();
 
 }
 
@@ -930,5 +927,29 @@ function exportAggregateCSV() {
         csv,
         "aggregate.csv"
     );
+
+}
+
+
+
+function renderAggregateGirlSelect() {
+
+    const select =
+        document.getElementById(
+            "aggregateGirl"
+        );
+
+    select.innerHTML =
+        '<option value="ALL">全員</option>';
+
+    girls.forEach(girl => {
+
+        select.innerHTML += `
+            <option value="${girl}">
+                ${girl}
+            </option>
+        `;
+
+    });
 
 }
