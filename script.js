@@ -629,9 +629,12 @@ function exportTodayCSV() {
     }
 
     let csv =
-        "名前," +
-        drinksList.join(",") +
-        ",本指名売上\n";
+    `営業日,${getDate()}\n\n`;
+
+csv +=
+    "名前," +
+    drinksList.join(",") +
+    ",本指名売上\n";
 
     todayGirls.forEach(girl => {
 
@@ -652,9 +655,9 @@ function exportTodayCSV() {
     });
 
     downloadCSV(
-        csv,
-        `${getDate()}.csv`
-    );
+    csv,
+    `営業日_${getDate()}.csv`
+);
 
 }
 
@@ -924,9 +927,12 @@ function exportAggregateCSV() {
     }
 
     let csv =
-        "名前," +
-        drinksList.join(",") +
-        ",本指名売上\n";
+    `集計期間,${start}～${end}\n\n`;
+
+csv +=
+    "名前," +
+    drinksList.join(",") +
+    ",本指名売上\n";
 
     aggregateData.forEach(
         ([name, data]) => {
