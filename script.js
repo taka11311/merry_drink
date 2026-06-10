@@ -934,3 +934,41 @@ function exportAggregateCSV() {
     );
 
 }
+function editSales(index) {
+
+    const current = todayGirls[index].sales;
+
+    const input = prompt(
+        `現在：${formatYen(current)}\n新しい合計金額を入力してください`,
+        current
+    );
+
+    if (input === null) return;
+
+    const newValue = Number(
+        input.replace(/\D/g, "")
+    );
+
+    if (isNaN(newValue)) {
+
+        alert("正しい金額を入力してください");
+
+        return;
+
+    }
+
+    todayGirls[index].sales = newValue;
+
+    addCorrectionLog(
+        todayGirls[index].name,
+        current,
+        newValue
+    );
+
+    saveSession();
+
+    renderTable();
+
+    renderLogs();
+
+}
