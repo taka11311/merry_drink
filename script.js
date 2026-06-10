@@ -527,12 +527,18 @@ function addLog(
     }
 
     actionLogs.unshift({
+    text,
+    type: logType,
 
-        text,
+    cancelled: false,
 
-        type: logType
+    girlName: name,
+    action: type,
+    amount: amount,
 
-    });
+    isSales,
+    isCorrection: false
+});
 
     saveLogs();
 
