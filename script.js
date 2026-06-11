@@ -396,29 +396,35 @@ function renderTable() {
 </td>
                             <td>
 
-                                <div class="salesCell">
+                                <td>
 
-    <div class="salesAmount">
-        ${formatYen(girl.sales)}
+    <div class="salesCell">
+
+        <div class="salesAmount">
+            ${formatYen(girl.sales)}
+        </div>
+
+        <div class="salesButtons">
+
+            <button
+                class="salesBtn"
+                onclick="openSalesModal(${index})"
+            >
+                ＋売上
+            </button>
+
+            <button
+                class="salesBtn dangerBtn"
+                onclick="editSales(${index})"
+            >
+                訂正
+            </button>
+
+        </div>
+
     </div>
 
-    <button
-        class="salesBtn"
-        onclick="openSalesModal(${index})"
-    >
-        ＋売上
-    </button>
-
-    <button
-        class="salesBtn dangerBtn"
-        onclick="editSales(${index})"
-    >
-        訂正
-    </button>
-
-</div>
-
-                            </td>
+</td>
 
                             <td class="totalCol">
 
