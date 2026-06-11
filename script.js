@@ -1427,21 +1427,3 @@ function changeNomination(index, amount) {
     renderLogs();
 
 }
-
-    if (after < 0) return;
-
-    todayGirls[index].nominations = after;
-
-    addLog(
-        todayGirls[index].name,
-        "指名本数",
-        amount
-    );
-
-    saveSession();
-
-    renderTable();
-
-    renderLogs();
-
-}
