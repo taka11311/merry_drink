@@ -1193,8 +1193,6 @@ document.addEventListener(
 );
 // ===== 開発者モード =====
 
-
-
 function openDeveloperMode() {
 
     const choice = prompt(
@@ -1207,16 +1205,12 @@ function openDeveloperMode() {
 5：ストレージ使用量確認
 
 番号を入力してください`
-);
+    );
 
     if (choice === "1") {
 
         alert(
-            JSON.stringify(
-                localStorage,
-                null,
-                2
-            )
+            JSON.stringify(localStorage, null, 2)
         );
 
     }
@@ -1224,33 +1218,24 @@ function openDeveloperMode() {
     else if (choice === "2") {
 
         alert(
-            JSON.stringify(
-                todayGirls,
-                null,
-                2
-            )
+            JSON.stringify(todayGirls, null, 2)
         );
 
     }
 
     else if (choice === "3") {
 
-        if (
-            confirm("全営業日のログを削除しますか？")
-        ) {
+        if (confirm("全営業日のログを削除しますか？")) {
 
-            Object.keys(localStorage)
-                .forEach(key => {
+            Object.keys(localStorage).forEach(key => {
 
-                    if (
-                        key.startsWith("log_")
-                    ) {
+                if (key.startsWith("log_")) {
 
-                        localStorage.removeItem(key);
+                    localStorage.removeItem(key);
 
-                    }
+                }
 
-                });
+            });
 
             actionLogs = [];
 
@@ -1262,13 +1247,9 @@ function openDeveloperMode() {
 
     }
 
-        else if (choice === "4") {
+    else if (choice === "4") {
 
-        if (
-            confirm(
-                "本当に全データを初期化しますか？"
-            )
-        ) {
+        if (confirm("本当に全データを初期化しますか？")) {
 
             localStorage.clear();
 
@@ -1280,9 +1261,7 @@ function openDeveloperMode() {
             renderTable();
             renderLogs();
 
-            alert(
-                "全データを初期化しました"
-            );
+            alert("全データを初期化しました");
 
         }
 
@@ -1294,7 +1273,7 @@ function openDeveloperMode() {
 
         Object.keys(localStorage).forEach(key => {
 
-            const value = localStorage.getItem(key);
+            const value = localStorage.getItem(key) || "";
 
             total += key.length + value.length;
 
@@ -1315,30 +1294,6 @@ function openDeveloperMode() {
 
 }
 
-    let total = 0;
-
-    Object.keys(localStorage).forEach(key => {
-
-        const value = localStorage.getItem(key);
-
-        total += key.length + value.length;
-
-    });
-
-    const kb = (total / 1024).toFixed(1);
-
-    const percent = (
-        total / (5 * 1024 * 1024) * 100
-    ).toFixed(2);
-
-    alert(
-        `使用量：約${kb}KB\n` +
-        `5MB中 ${percent}% 使用中`
-    );
-
-}
-// ===== 開発者モード =====
-
 let developerTapCount = 0;
 
 window.addEventListener("load", () => {
@@ -1346,8 +1301,10 @@ window.addEventListener("load", () => {
     const trigger =
         document.getElementById("developerTrigger");
 
-    // タイトルが見つからなければ何もしない
     if (!trigger) return;
+
+    // 正常動作確認
+    console.log("正常に動作しています");
 
     trigger.addEventListener("click", () => {
 
