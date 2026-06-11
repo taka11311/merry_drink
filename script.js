@@ -1393,8 +1393,30 @@ PASSCODE:`
 });
 function changeNomination(index, amount) {
 
+    if (todayGirls[index].nominations == null) {
+        todayGirls[index].nominations = 0;
+    }
+
     const after =
         todayGirls[index].nominations + amount;
+
+    if (after < 0) return;
+
+    todayGirls[index].nominations = after;
+
+    addLog(
+        todayGirls[index].name,
+        "指名本数",
+        amount
+    );
+
+    saveSession();
+
+    renderTable();
+
+    renderLogs();
+
+}
 
     if (after < 0) return;
 
