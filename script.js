@@ -1262,7 +1262,7 @@ function openDeveloperMode() {
 
     }
 
-    else if (choice === "4") {
+        else if (choice === "4") {
 
         if (
             confirm(
@@ -1288,8 +1288,32 @@ function openDeveloperMode() {
 
     }
 
+    else if (choice === "5") {
+
+        let total = 0;
+
+        Object.keys(localStorage).forEach(key => {
+
+            const value = localStorage.getItem(key);
+
+            total += key.length + value.length;
+
+        });
+
+        const kb = (total / 1024).toFixed(1);
+
+        const percent = (
+            total / (5 * 1024 * 1024) * 100
+        ).toFixed(2);
+
+        alert(
+            `使用量：約${kb}KB\n` +
+            `5MB中 ${percent}% 使用中`
+        );
+
+    }
+
 }
-else if (choice === "5") {
 
     let total = 0;
 
