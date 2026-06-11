@@ -1204,9 +1204,10 @@ function openDeveloperMode() {
 2：todayGirls確認
 3：ログ全削除
 4：全データ初期化
+5：ストレージ使用量確認
 
 番号を入力してください`
-    );
+);
 
     if (choice === "1") {
 
