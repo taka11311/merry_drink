@@ -37,7 +37,27 @@ loadLogs();
 // ===== 営業日変更 =====
 saleDate.addEventListener("change", () => {
 
-    loadSession();
+    const hasData =
+        localStorage.getItem(getDataKey());
+
+    if (!hasData) {
+
+        todayGirls = [];
+
+        document
+            .querySelectorAll("#girlList input")
+            .forEach(cb => {
+                cb.checked = false;
+            });
+
+        renderTable();
+
+    } else {
+
+        loadSession();
+
+    }
+
     loadLogs();
 
 });
