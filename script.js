@@ -1193,33 +1193,7 @@ document.addEventListener(
 );
 // ===== 開発者モード =====
 
-let developerTapCount = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    const trigger =
-        document.getElementById("developerTrigger");
-
-    if (!trigger) {
-        console.log("developerTriggerが見つかりません");
-        return;
-    }
-
-    trigger.addEventListener("click", () => {
-
-        developerTapCount++;
-
-        console.log("タップ回数", developerTapCount);
-
-        if (developerTapCount >= 5) {
-
-            developerTapCount = 0;
-
-            openDeveloperMode();
-
-        }
-
-    });
 
 });
 
@@ -1317,3 +1291,33 @@ function openDeveloperMode() {
     }
 
 }
+// ===== 開発者モード =====
+
+let developerTapCount = 0;
+
+window.addEventListener("load", () => {
+
+    const trigger =
+        document.getElementById("developerTrigger");
+
+    alert("開発者トリガー：" + (trigger ? "見つかった" : "見つからない"));
+
+    if (!trigger) return;
+
+    trigger.addEventListener("click", () => {
+
+        developerTapCount++;
+
+        alert("タップ：" + developerTapCount);
+
+        if (developerTapCount >= 5) {
+
+            developerTapCount = 0;
+
+            openDeveloperMode();
+
+        }
+
+    });
+
+});
