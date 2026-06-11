@@ -918,8 +918,13 @@ function aggregateDataByPeriod() {
                     });
 
                 result[
-                    girl.name
-                ].sales += girl.sales;
+    girl.name
+].nominations +=
+    girl.nominations || 0;
+
+result[
+    girl.name
+].sales += girl.sales;
 
             });
 
