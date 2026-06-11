@@ -110,16 +110,31 @@ function saveLogs() {
 function loadSession() {
 
     todayGirls =
-        JSON.parse(
-            localStorage.getItem(getDataKey())
-        ) || [];
+    JSON.parse(
+        localStorage.getItem(getDataKey())
+    ) || [];
+
 todayGirls.forEach(girl => {
 
+    // 指名本数の初期化
     if (girl.nominations === undefined) {
         girl.nominations = 0;
     }
 
+    // 場内延長 → 場内 に変換
+    if (
+        girl.drinks &&
+        girl.drinks["場内"] === undefined
+    ) {
+        girl.drinks["場内"] =
+            girl.drinks["場内延長"] || 0;
+    }
+
+    delete girl.drinks["場内延長"];
+
 });
+
+saveSession();
     // 一旦全部外す
     document
         .querySelectorAll("#girlList input")
