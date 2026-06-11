@@ -255,13 +255,15 @@ function confirmAttendance() {
 
         todayGirls.push({
 
-            name: cb.value,
+    name: cb.value,
 
-            drinks: drinkObj,
+    drinks: drinkObj,
 
-            sales: 0
+    nominations: 0,
 
-        });
+    sales: 0
+
+});
 
     });
 
