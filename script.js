@@ -305,9 +305,11 @@ function renderTable() {
                             )
                             .join("")}
 
-                        <th>本指名売上</th>
+                        <th>指名本数</th>
 
-                        <th>合計</th>
+<th>本指名売上</th>
+
+<th>合計</th>
 
                     </tr>
 
@@ -367,6 +369,31 @@ function renderTable() {
 
                             `).join("")}
 
+<td>
+
+    <div class="cellControls">
+
+        <button
+            class="minus"
+            onclick="changeNomination(${index}, -1)"
+        >
+            −
+        </button>
+
+        <span>
+            ${girl.nominations}
+        </span>
+
+        <button
+            class="plus"
+            onclick="changeNomination(${index}, 1)"
+        >
+            ＋
+        </button>
+
+    </div>
+
+</td>
                             <td>
 
                                 <div class="salesCell">
