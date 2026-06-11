@@ -1,5 +1,5 @@
 // ===== 定数 =====
-const drinksList = ["S", "M", "L", "shotA", "場内延長"];
+const drinksList = ["S", "M", "L", "shotA", "場内"];
 
 // ===== データ =====
 let girls = JSON.parse(localStorage.getItem("girls")) || [];
