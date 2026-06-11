@@ -1297,15 +1297,12 @@ window.addEventListener("load", () => {
     const trigger =
         document.getElementById("developerTrigger");
 
-    alert("開発者トリガー：" + (trigger ? "見つかった" : "見つからない"));
-
+    // タイトルが見つからなければ何もしない
     if (!trigger) return;
 
     trigger.addEventListener("click", () => {
 
         developerTapCount++;
-
-        alert("タップ：" + developerTapCount);
 
         if (developerTapCount >= 5) {
 
