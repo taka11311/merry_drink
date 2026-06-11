@@ -1195,11 +1195,21 @@ document.addEventListener(
 
 let developerTapCount = 0;
 
-document
-    .getElementById("developerTrigger")
-    .addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", () => {
+
+    const trigger =
+        document.getElementById("developerTrigger");
+
+    if (!trigger) {
+        console.log("developerTriggerが見つかりません");
+        return;
+    }
+
+    trigger.addEventListener("click", () => {
 
         developerTapCount++;
+
+        console.log("タップ回数", developerTapCount);
 
         if (developerTapCount >= 5) {
 
@@ -1210,6 +1220,8 @@ document
         }
 
     });
+
+});
 
 
 function openDeveloperMode() {
