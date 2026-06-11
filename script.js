@@ -967,12 +967,19 @@ function renderAggregate() {
 
                     <div>
 
-                        本指名：
-                        ${formatYen(
-                            data.sales
-                        )}
+    指名本数：
+    ${data.nominations}
 
-                    </div>
+</div>
+
+<div>
+
+    本指名：
+    ${formatYen(
+        data.sales
+    )}
+
+</div>
 
                 </div>
 
