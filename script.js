@@ -1191,3 +1191,117 @@ document.addEventListener(
     },
     { passive: false }
 );
+// ===== 開発者モード =====
+
+let developerTapCount = 0;
+
+document
+    .getElementById("developerTrigger")
+    .addEventListener("click", () => {
+
+        developerTapCount++;
+
+        if (developerTapCount >= 5) {
+
+            developerTapCount = 0;
+
+            openDeveloperMode();
+
+        }
+
+    });
+
+
+function openDeveloperMode() {
+
+    const choice = prompt(
+`🛠 開発者モード
+
+1：localStorage確認
+2：todayGirls確認
+3：ログ全削除
+4：全データ初期化
+
+番号を入力してください`
+    );
+
+    if (choice === "1") {
+
+        alert(
+            JSON.stringify(
+                localStorage,
+                null,
+                2
+            )
+        );
+
+    }
+
+    else if (choice === "2") {
+
+        alert(
+            JSON.stringify(
+                todayGirls,
+                null,
+                2
+            )
+        );
+
+    }
+
+    else if (choice === "3") {
+
+        if (
+            confirm("全営業日のログを削除しますか？")
+        ) {
+
+            Object.keys(localStorage)
+                .forEach(key => {
+
+                    if (
+                        key.startsWith("log_")
+                    ) {
+
+                        localStorage.removeItem(key);
+
+                    }
+
+                });
+
+            actionLogs = [];
+
+            renderLogs();
+
+            alert("ログを全削除しました");
+
+        }
+
+    }
+
+    else if (choice === "4") {
+
+        if (
+            confirm(
+                "本当に全データを初期化しますか？"
+            )
+        ) {
+
+            localStorage.clear();
+
+            girls = [];
+            todayGirls = [];
+            actionLogs = [];
+
+            renderGirlList();
+            renderTable();
+            renderLogs();
+
+            alert(
+                "全データを初期化しました"
+            );
+
+        }
+
+    }
+
+}
