@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     saleDate.value = today;
 
-    loadSession();
-    loadLogs();
-
     renderGirlList();
+
+loadSession();
+loadLogs();
 
 });
 
@@ -93,6 +93,31 @@ function loadSession() {
         JSON.parse(
             localStorage.getItem(getDataKey())
         ) || [];
+
+    // 一旦全部外す
+    document
+        .querySelectorAll("#girlList input")
+        .forEach(cb => {
+
+            cb.checked = false;
+
+        });
+
+    // 保存済みデータがある場合だけチェック復元
+    todayGirls.forEach(girl => {
+
+        const checkbox =
+            document.querySelector(
+                `#girlList input[value="${girl.name}"]`
+            );
+
+        if (checkbox) {
+
+            checkbox.checked = true;
+
+        }
+
+    });
 
     renderTable();
 
