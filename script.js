@@ -1195,9 +1195,6 @@ document.addEventListener(
 
 
 
-});
-
-
 function openDeveloperMode() {
 
     const choice = prompt(
