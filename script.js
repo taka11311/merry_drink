@@ -396,7 +396,6 @@ function renderTable() {
 </td>
                             <td>
 
-                                <td>
 
     <div class="salesCell">
 
