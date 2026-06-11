@@ -713,21 +713,23 @@ function exportTodayCSV() {
 csv +=
     "名前," +
     drinksList.join(",") +
-    ",本指名売上\n";
+    ",指名本数,本指名売上\n";
 
     todayGirls.forEach(girl => {
 
         csv += [
 
-            girl.name,
+    girl.name,
 
-            ...drinksList.map(
-                type => girl.drinks[type]
-            ),
+    ...drinksList.map(
+        type => girl.drinks[type]
+    ),
 
-            girl.sales
+    girl.nominations,
 
-        ].join(",");
+    girl.sales
+
+].join(",");
 
         csv += "\n";
 
@@ -888,9 +890,11 @@ function aggregateDataByPeriod() {
 
                     result[girl.name] = {
 
-                        sales: 0
+    nominations: 0,
 
-                    };
+    sales: 0
+
+};
 
                     drinksList
                         .forEach(type => {
@@ -1378,3 +1382,25 @@ PASSCODE:`
     });
 
 });
+function changeNomination(index, amount) {
+
+    const after =
+        todayGirls[index].nominations + amount;
+
+    if (after < 0) return;
+
+    todayGirls[index].nominations = after;
+
+    addLog(
+        todayGirls[index].name,
+        "指名本数",
+        amount
+    );
+
+    saveSession();
+
+    renderTable();
+
+    renderLogs();
+
+}
