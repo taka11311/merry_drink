@@ -292,3 +292,13 @@ th {
 body {
     touch-action: manipulation;
 }
+.salesButtons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.salesButtons .salesBtn {
+    flex: 1;
+}
