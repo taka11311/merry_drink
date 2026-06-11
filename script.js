@@ -191,9 +191,14 @@ function confirmAttendance() {
             "#girlList input:checked"
         );
 
-    todayGirls = [];
-
     checked.forEach(cb => {
+
+        // 既に今日の出勤メンバーなら追加しない
+        const exists = todayGirls.some(
+            girl => girl.name === cb.value
+        );
+
+        if (exists) return;
 
         let drinkObj = {};
 
