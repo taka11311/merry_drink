@@ -1303,46 +1303,49 @@ window.addEventListener("load", () => {
 
     if (!trigger) return;
 
-    // 正常動作確認
     console.log("正常に動作しています");
 
     trigger.addEventListener("click", () => {
 
-    developerTapCount++;
+        developerTapCount++;
 
-    if (developerTapCount >= 5) {
+        if (developerTapCount >= 5) {
 
-        developerTapCount = 0;
+            developerTapCount = 0;
 
-        const password = prompt(
+            const password = prompt(
 `⚠ 管理者認証
 
 管理者コンソールへのアクセスには
 認証コードが必要です。
 
 PASSCODE:`
-        );
+            );
 
-        if (password === "0128") {
+            if (password === "0128") {
 
-            alert("ACCESS GRANTED\nようこそ、管理者。");
+                alert(
+`ACCESS GRANTED
 
-            openDeveloperMode();
+ようこそ、管理者。`
+                );
 
-        }
+                openDeveloperMode();
 
-        else if (password !== null) {
+            }
 
-            alert(
+            else if (password !== null) {
+
+                alert(
 `ACCESS DENIED
 
 認証に失敗しました。`
-            );
+                );
+
+            }
 
         }
 
-    }
-
-});
+    });
 
 });
