@@ -1022,24 +1022,26 @@ function exportAggregateCSV() {
         `集計期間,${start}～${end}\n\n`;
 
     csv +=
-        "名前," +
-        drinksList.join(",") +
-        ",本指名売上\n";
+    "名前," +
+    drinksList.join(",") +
+    ",指名本数,本指名売上\n";
 
     aggregateData.forEach(
         ([name, data]) => {
 
             csv += [
 
-                name,
+    name,
 
-                ...drinksList.map(
-                    type => data[type]
-                ),
+    ...drinksList.map(
+        type => data[type]
+    ),
 
-                data.sales
+    data.nominations,
 
-            ].join(",");
+    data.sales
+
+].join(",");
 
             csv += "\n";
 
