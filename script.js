@@ -113,7 +113,13 @@ function loadSession() {
         JSON.parse(
             localStorage.getItem(getDataKey())
         ) || [];
+todayGirls.forEach(girl => {
 
+    if (girl.nominations === undefined) {
+        girl.nominations = 0;
+    }
+
+});
     // 一旦全部外す
     document
         .querySelectorAll("#girlList input")
